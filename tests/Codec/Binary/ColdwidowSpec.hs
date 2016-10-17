@@ -40,6 +40,8 @@ spec = do
       decode ":0" `shouldBe` (45*44)
     it "decodes \"::\" as 45*44+44" $
       decode "::" `shouldBe` (45*44+44)
+    it "decodes \"Q\" as 26" $
+      decode "Q" `shouldBe` 26
 
   describe "packInteger" $ do
     it "packs [0] as 0" $

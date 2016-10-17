@@ -6,6 +6,7 @@ import qualified Data.ByteString.Lazy as B
 import Data.Word (Word8)
 import Numeric (showIntAtBase, readInt)
 import Data.List (elemIndex)
+import Data.Maybe (fromJust, isJust)
 
 
 chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -27,7 +28,9 @@ decode :: String -> Integer
 decode encoded = let parsed = readEncodedInt encoded
                  in case parsed of
                       [(val, [])] -> val
-                      otherwise -> error "Error parsing encoded value"
+                      otherwise -> error $ "Error parsing encoded value."++parseMessages
+                        where
+                          parseMessages = concatMap parseMessage parsed
 
 unpackInteger :: Integer -> ByteString
 unpackInteger 0 = B.singleton 0
@@ -42,13 +45,10 @@ readEncodedInt :: ReadS Integer
 readEncodedInt = readInt base isDigit fromDigit
 
 isDigit :: Char -> Bool
-isDigit digit = digit >= '0' && digit <= ':'
+isDigit digit = isJust $ elemIndex digit chars
 
 fromDigit :: Char -> Int
-fromDigit digit = let val = elemIndex digit chars
-                  in case val of
-                       Nothing -> error ("Decoding error: character "++[digit]++" is not in the alphabet")
-                       Just val' -> val'
+fromDigit digit = fromJust $ elemIndex digit chars
 
 packInteger' :: [Word8] -> Integer -> Integer
 packInteger' [] result = result
@@ -57,3 +57,7 @@ packInteger' (d:ds) result = packInteger' ds ((fromIntegral d) .|. (result `shif
 unpackInteger' :: Integer -> [Word8] -> [Word8]
 unpackInteger' 0 result = result
 unpackInteger' value result = unpackInteger' (value `shiftR` 8) $ (fromInteger value :: Word8) : result
+
+parseMessage :: (Integer, String) -> String
+parseMessage (parsed, remainder) = "\n\tStopped at: " ++ (take 20 remainder)
+

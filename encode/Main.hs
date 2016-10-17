@@ -1,3 +1,5 @@
+-- File: encode/Main.hs
+
 module Main where
 
 import System.Environment (getArgs)
