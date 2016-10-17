@@ -38,6 +38,7 @@ Test-Suite cold-widow-tests
   type:                 exitcode-stdio-1.0
   main-is:              Spec.hs
   default-language:     Haskell2010
+  other-modules:        Codec.Binary.ColdwidowSpec
   build-depends:        base >= 4.7 && < 5,
                         hspec,
                         bytestring,
