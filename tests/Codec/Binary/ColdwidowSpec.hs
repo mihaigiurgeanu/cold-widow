@@ -5,6 +5,8 @@ module Codec.Binary.ColdwidowSpec (spec) where
 import Test.Hspec
 import Codec.Binary.Coldwidow
 
+import Data.ByteString.Lazy (singleton, pack)
+
 spec :: Spec
 spec = do
   describe "encode" $ do
@@ -38,3 +40,15 @@ spec = do
       decode ":0" `shouldBe` (45*44)
     it "decodes \"::\" as 45*44+44" $
       decode "::" `shouldBe` (45*44+44)
+
+  describe "packInteger" $ do
+    it "packs [0] as 0" $
+      packInteger (singleton 0) `shouldBe` 0
+    it "packs [0, 0] as 0" $
+      packInteger (pack [0, 0]) `shouldBe` 0
+    it "packs [1] as 1" $
+      packInteger (singleton 1) `shouldBe` 1
+    it "packs [0, 1] as 1" $
+      packInteger (pack [0, 1]) `shouldBe` 1
+    it "packs [1, 0] as 256" $
+      packInteger (pack [1, 0]) `shouldBe` 256
