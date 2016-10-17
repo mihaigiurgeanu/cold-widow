@@ -60,3 +60,7 @@ spec = do
       unpackInteger 1 `shouldBe` (singleton 1)
     it "unpacks 256 as [1, 0]" $
       unpackInteger 256 `shouldBe` (pack [1, 0])
+    it "unpacks 65535 as [255, 255]" $
+      unpackInteger 65535 `shouldBe` (pack [255, 255])
+    it "unpacks 1+2*256+3*256*256+4*256*256*256 as [4, 3, 2, 1]" $
+      unpackInteger (1+2*256+3*256*256+4*256*256*256) `shouldBe` (pack [4, 3, 2, 1])

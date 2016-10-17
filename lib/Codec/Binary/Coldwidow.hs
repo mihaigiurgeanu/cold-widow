@@ -1,6 +1,6 @@
 module Codec.Binary.Coldwidow (encode, decode, packInteger, unpackInteger) where
 
-import Data.Bits (shiftL, (.|.))
+import Data.Bits (shiftL, (.|.), shiftR)
 import Data.ByteString.Lazy (ByteString)
 import qualified Data.ByteString.Lazy as B
 import Data.Word (Word8)
@@ -30,7 +30,8 @@ decode encoded = let parsed = readEncodedInt encoded
                       otherwise -> error "Error parsing encoded value"
 
 unpackInteger :: Integer -> ByteString
-unpackInteger = undefined
+unpackInteger 0 = B.singleton 0
+unpackInteger x = B.pack $ unpackInteger' x []
 
 -- internal functions
 
@@ -53,3 +54,6 @@ packInteger' :: [Word8] -> Integer -> Integer
 packInteger' [] result = result
 packInteger' (d:ds) result = packInteger' ds ((fromIntegral d) .|. (result `shiftL` 8))
 
+unpackInteger' :: Integer -> [Word8] -> [Word8]
+unpackInteger' 0 result = result
+unpackInteger' value result = unpackInteger' (value `shiftR` 8) $ (fromInteger value :: Word8) : result
