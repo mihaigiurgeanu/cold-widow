@@ -22,3 +22,19 @@ spec = do
       encode (45*44) `shouldBe` ":0"
     it "returns characters \"::\" when encoding value 45*44+44" $
       encode (45*44+44) `shouldBe` "::"
+      
+  describe "decode" $ do
+    it "decodes \"0\" as 0" $
+      decode "0" `shouldBe` 0
+    it "decodes \":\" as 44" $
+      decode ":" `shouldBe` 44
+    it "decodes \"10\" as 45" $
+      decode "10" `shouldBe` 45
+    it "decodes \"11\" as 46" $
+      decode "11" `shouldBe` 46
+    it "decodes \"1:\" as 89" $
+      decode "1:" `shouldBe` 89
+    it "decodes \":0\" as 45*44" $
+      decode ":0" `shouldBe` (45*44)
+    it "decodes \"::\" as 45*44+44" $
+      decode "::" `shouldBe` (45*44+44)
