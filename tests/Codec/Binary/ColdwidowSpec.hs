@@ -52,3 +52,11 @@ spec = do
       packInteger (pack [0, 1]) `shouldBe` 1
     it "packs [1, 0] as 256" $
       packInteger (pack [1, 0]) `shouldBe` 256
+
+  describe "unpackInteger" $ do
+    it "unpacks 0 as [0]" $
+      unpackInteger 0 `shouldBe` (singleton 0)
+    it "unpacks 1 as [1]" $
+      unpackInteger 1 `shouldBe` (singleton 1)
+    it "unpacks 256 as [1, 0]" $
+      unpackInteger 256 `shouldBe` (pack [1, 0])

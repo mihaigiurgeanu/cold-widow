@@ -1,4 +1,4 @@
-module Codec.Binary.Coldwidow (encode, decode, packInteger) where
+module Codec.Binary.Coldwidow (encode, decode, packInteger, unpackInteger) where
 
 import Data.Bits (shiftL, (.|.))
 import Data.ByteString.Lazy (ByteString)
@@ -24,6 +24,9 @@ packInteger s = packInteger' (B.unpack s) 0
 
 decode :: String -> Integer
 decode _ = 0
+
+unpackInteger :: Integer -> ByteString
+unpackInteger = undefined
 
 -- internal functions
 
