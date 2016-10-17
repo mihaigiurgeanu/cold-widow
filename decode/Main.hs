@@ -18,7 +18,9 @@ main = do
     WriteMode
     (\h -> do
         mapM_ (\_ -> B.hPut h (B.singleton 0)) zeroes
-        B.hPut h $ unpackInteger $ decode nonzeroes)
+        if null nonzeroes
+          then return ()
+          else B.hPut h $ unpackInteger $ decode nonzeroes)
 
 
 
