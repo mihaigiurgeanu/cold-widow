@@ -41,6 +41,13 @@ executable decode45
                         bytestring,
                         cold-widow
 
+executable compact-decode45
+  hs-source-dirs:       compact-decode
+  main-is:              Main.hs
+  default-language:     Haskell2010
+  build-depends:        base >= 4.7 && < 5,
+                        bytestring
+
 Test-Suite cold-widow-tests
   hs-source-dirs:       tests
   type:                 exitcode-stdio-1.0
