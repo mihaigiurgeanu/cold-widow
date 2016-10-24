@@ -1,7 +1,7 @@
 name:                cold-widow
-version:             0.1.0
-synopsis:            Simple project template from stack
-description:         Please see README.md
+version:             0.1.1
+synopsis:            File transfer via QR Codes.
+description:         Utilities and Haskell library to transfer files via qr-codes.
 homepage:            https://github.com/mihaigiurgeanu/cold-widow#readme
 license:             BSD3
 license-file:        LICENSE
@@ -11,6 +11,7 @@ copyright:           2016 Mihai Giurgeanu
 category:            Utility
 build-type:          Simple
 cabal-version:       >=1.10
+extra-doc-files:     README.md
 
 library
   hs-source-dirs:       lib
