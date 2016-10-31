@@ -79,9 +79,9 @@ that you can send to anyone you want.
 
 Finally, using `decode45` you can convert the fragments of text back to the original
 archive. Copy in the clipboard the text coresponding to first part (the file `xaa`
-in the example above) and paste it to the input of the following command:
+in the example above) and paste it in a file, for example in the `xaa.txt` file:
 
-    #> decode45 xaa
+    #> decode45 xaa < xaa.txt
 
 This will generate on disk the file named `xaa` with the same contents of the 
 original `xaa` file which is a part of the splited compressed archive. After
