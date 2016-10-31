@@ -1,6 +1,6 @@
 # cold-widow
 
-Executables and Haskell library to transport files via QR Codes.
+Executables and Haskell library to transfer files via QR Codes.
 
 The idea is to generate a list of qr-coedes representing the archived
 version folder. The qr-codes will be read as text values by any qr-code
