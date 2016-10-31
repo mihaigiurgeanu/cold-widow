@@ -20,7 +20,7 @@ main = do
         mapM_ (\_ -> B.hPut h (B.singleton 0)) zeroes
         if null nonzeroes
           then return ()
-          else B.hPut h $ unpackInteger $ decode nonzeroes)
+          else B.hPut h $ unpackInteger $ decode $ filter (\c -> c /= '\n' && c/= '\r') nonzeroes)
 
 
 
