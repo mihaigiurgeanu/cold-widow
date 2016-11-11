@@ -89,6 +89,8 @@ The commands that you can pass to the `cold-widow` executable are:
 ### make-codes
 
     #> cold-widow make-codes [<options>...] [<file_or_folder>...]
+    #> cold-widow mk-codes [<options>...] [<file_or_folder>...]
+    #> cold-widow mc [<options>...] [<file_or_folder>...]
 
 The `make-codes` command is used to generate the qr-codes for some files. Synonyms of
 the `make-codes` command are:
@@ -118,7 +120,6 @@ The error levels are:
 *   `Q` - error recovery up to 25%
 *   `H` - error recovery up to 30%
 
-
 Normal execution of `cold-widow` is a _2 steps execution_:
 
 1.  In the first step, the application computes the optimum block size by
@@ -136,6 +137,26 @@ in memory then generate the qr-codes.
 The `-t` (`--temporary-file`) switch is the same as `-1` switch, instructing the 
 application to not use the _2 steps execution_, but instead of composing the archive in
 memory as `-1` switch does, save the archive as a temporary file.
+
+If no files or folders are specified on the command line, then the application will read
+and generate qr-codes for the content read from stanard input. In this case, the
+_2 steps execution_ will be different, in that, at the first run will display on
+standard error the command line switches that should be used to set the proper block
+size. You should run the program a second time, with the new command line arguments
+to obtain the qr-codes.
+
+### receive
+
+    #> cold-widow receive [<option>....] [<file>....]
+	#> cold-widow rcv [<option>...] [<file>....]
+	#> cold-widow r [<option>...] [<file>....]
+
+`receive` is the command used to make cold-widow read the texts resulted from
+scnanning the qr-codes and decode them into the original files. The default behaviour
+is to check the type of the file that is the uncompressed version of the decoded
+content. If it is an archive, then the archive is unarchive on the local disk. If
+it is not an archive, the file is displayed at the standard output. The command
+line options may change this default behaviour.
 
 ## encode45
 
