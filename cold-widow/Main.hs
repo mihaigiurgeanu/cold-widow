@@ -2,8 +2,9 @@ module Main where
 
 import System.Console.Program
 import System.Console.Command
-import System.Console.Argument 
+import qualified System.Console.Argument as Arg
 import Control.Applicative ((<$))
+import Control.Monad.IO.Class
 
 main :: IO ()
 main = single program
@@ -21,35 +22,56 @@ program = Node (command "cold-widow" "Transfer files via QRCodes" . io $ interac
             Node (command "r" "Synonym for receive command" receiveAction) []
           ]
 
-makeCodesAction = io $ putStrLn "make-codes not implemented"
+-- variable number of non options
+withNonOptions :: (MonadIO m) => Arg.Type (Maybe x) -> ([x] -> Action m) -> Action m
+withNonOptions t f = withNonOption t (collectNonOptions [])
+  where collectNonOptions xs Nothing  = (f . reverse) xs
+        collectNonOptions xs (Just x) = withNonOption t (collectNonOptions (x:xs))
+
+optionalFile :: Arg.Type (Maybe FilePath)
+optionalFile = Arg.Type { Arg.name = "FILE", Arg.parser = Right . Just, Arg.defaultValue = Just Nothing }
+
+makeCodesAction :: Action IO
+makeCodesAction = withOption singleStepOption $
+                  \ singleStep -> withOption tempFileOption $
+                                  \ tempFile -> withOption blockSizeOption $
+                                                \ blockSize -> withOption qrVersionOption $
+                                                               \ qrVersion -> withOption levelOption $
+                                                                              \ level -> withNonOptions optionalFile $
+                                                                                         \ files -> io $ makeCodes singleStep tempFile blockSize qrVersion level files
+
 receiveAction = io $ putStrLn "receive not implemented"
 
 
-singleStepOption = option ['1'] ["fast", "single-step"] boolean False "Force single step execution, in memory"
-tempFileOption = option ['t'] ["temporary-file"] boolean False "Force single step execution using a temporary file"
-blockSizeOption = option ['s'] ["bs", "block-size"] maybeNatural Nothing "Use the specified block size instead of calculating the optimal blocksize"
-qrVersionOption = option ['q'] ["qr-version"]  version AutoVersion "Use the specified qr code version instead of automatically determine the version"
-levelOption = option ['l'] ["error-level"] errorLevel AutoLevel "Use the specified error-level instead of automatically determine the optimal level"
+singleStepOption = Arg.option ['1'] ["fast", "single-step"] Arg.boolean False "Force single step execution, in memory"
+tempFileOption = Arg.option ['t'] ["temporary-file"] Arg.boolean False "Force single step execution using a temporary file"
+blockSizeOption = Arg.option ['s'] ["bs", "block-size"] maybeNatural Nothing "Use the specified block size instead of calculating the optimal blocksize"
+qrVersionOption = Arg.option ['q'] ["qr-version"]  version AutoVersion "Use the specified qr code version instead of automatically determine the version"
+levelOption = Arg.option ['l'] ["error-level"] errorLevel AutoLevel "Use the specified error-level instead of automatically determine the optimal level"
 
 data VersionOption = Version Int | AutoVersion
 data LevelOption = LevelL | LevelM | LevelQ | LevelH | AutoLevel
 
-maybeNatural :: Type (Maybe Integer)
-maybeNatural = Type (\ n -> Just <$> (parser natural) n ) "INT (natural)" Nothing 
+maybeNatural :: Arg.Type (Maybe Integer)
+maybeNatural = Arg.Type (\ n -> Just <$> (Arg.parser Arg.natural) n ) "INT (natural)" Nothing 
 
-version :: Type VersionOption
-version = Type (parseVersionOption . parser natural) "QR Code Version" Nothing
+version :: Arg.Type VersionOption
+version = Arg.Type (parseVersionOption . Arg.parser Arg.natural) "QR Code Version" Nothing
 
 parseVersionOption (Right x) | x >= 1 && x <= 40 = Right . Version $ fromInteger x
 parseVersionOption (Right x) | otherwise = Left "QR code version must be between 1 and 40"
 parseVersionOption (Left x) = Left x
 
-errorLevel :: Type LevelOption
-errorLevel = Type parseLevelOption "QR Code Error correction level" Nothing
+errorLevel :: Arg.Type LevelOption
+errorLevel = Arg.Type parseLevelOption "QR Code Error correction level" Nothing
 
 parseLevelOption "L" = Right LevelL
 parseLevelOption "M" = Right LevelM
 parseLevelOption "Q" = Right LevelQ
 parseLevelOption "H" = Right LevelH
 parseLevelOption _ = Left "Only L, M, Q or H levels are accepted for error-level argument"
+
+makeCodes :: Bool -> Bool -> Maybe Integer -> VersionOption -> LevelOption -> [FilePath] -> IO ()
+makeCodes singleStep tempFile blockSize qrVersion errLevel = do
+  fail "makeCodes not implented"
 
