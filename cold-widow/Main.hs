@@ -22,12 +22,6 @@ program = Node (command "cold-widow" "Transfer files via QRCodes" . io $ interac
             Node (command "r" "Synonym for receive command" receiveAction) []
           ]
 
--- variable number of non options
-withNonOptions :: (MonadIO m) => Arg.Type (Maybe x) -> ([x] -> Action m) -> Action m
-withNonOptions t f = withNonOption t (collectNonOptions [])
-  where collectNonOptions xs Nothing  = (f . reverse) xs
-        collectNonOptions xs (Just x) = withNonOption t (collectNonOptions (x:xs))
-
 optionalFile :: Arg.Type (Maybe FilePath)
 optionalFile = Arg.Type { Arg.name = "FILE", Arg.parser = Right . Just, Arg.defaultValue = Just Nothing }
 
@@ -38,7 +32,7 @@ makeCodesAction = withOption singleStepOption $
                                                 \ blockSize -> withOption qrVersionOption $
                                                                \ qrVersion -> withOption levelOption $
                                                                               \ level -> withNonOptions optionalFile $
-                                                                                         \ files -> io $ makeCodes singleStep tempFile blockSize qrVersion level files
+                                                                                        \ files -> io $ makeCodes singleStep tempFile blockSize qrVersion level files
 
 receiveAction = io $ putStrLn "receive not implemented"
 
@@ -56,14 +50,14 @@ maybeNatural :: Arg.Type (Maybe Integer)
 maybeNatural = Arg.Type (\ n -> Just <$> (Arg.parser Arg.natural) n ) "INT (natural)" Nothing 
 
 version :: Arg.Type VersionOption
-version = Arg.Type (parseVersionOption . Arg.parser Arg.natural) "QR Code Version" Nothing
+version = Arg.Type (parseVersionOption . Arg.parser Arg.natural) "INT" Nothing
 
 parseVersionOption (Right x) | x >= 1 && x <= 40 = Right . Version $ fromInteger x
 parseVersionOption (Right x) | otherwise = Left "QR code version must be between 1 and 40"
 parseVersionOption (Left x) = Left x
 
 errorLevel :: Arg.Type LevelOption
-errorLevel = Arg.Type parseLevelOption "QR Code Error correction level" Nothing
+errorLevel = Arg.Type parseLevelOption "CHAR" Nothing
 
 parseLevelOption "L" = Right LevelL
 parseLevelOption "M" = Right LevelM
