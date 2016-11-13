@@ -49,8 +49,8 @@ blockSizeOption = Arg.option ['s'] ["bs", "block-size"] maybeNatural Nothing "Us
 qrVersionOption = Arg.option ['q'] ["qr-version"]  version AutoVersion "Use the specified qr code version instead of automatically determine the version"
 levelOption = Arg.option ['l'] ["error-level"] errorLevel AutoLevel "Use the specified error-level instead of automatically determine the optimal level"
 
-data VersionOption = Version Int | AutoVersion
-data LevelOption = LevelL | LevelM | LevelQ | LevelH | AutoLevel
+data VersionOption = Version Int | AutoVersion deriving Show
+data LevelOption = LevelL | LevelM | LevelQ | LevelH | AutoLevel deriving Show
 
 maybeNatural :: Arg.Type (Maybe Integer)
 maybeNatural = Arg.Type (\ n -> Just <$> (Arg.parser Arg.natural) n ) "INT (natural)" Nothing 
@@ -72,6 +72,13 @@ parseLevelOption "H" = Right LevelH
 parseLevelOption _ = Left "Only L, M, Q or H levels are accepted for error-level argument"
 
 makeCodes :: Bool -> Bool -> Maybe Integer -> VersionOption -> LevelOption -> [FilePath] -> IO ()
-makeCodes singleStep tempFile blockSize qrVersion errLevel = do
-  fail "makeCodes not implented"
+makeCodes singleStep tempFile blockSize qrVersion errLevel files = do
+  putStrLn "makeCodes called with:"
+  putStrLn $ "   " ++ (show singleStep)
+  putStrLn $ "   " ++ (show tempFile)
+  putStrLn $ "   " ++ (show blockSize)
+  putStrLn $ "   " ++ (show qrVersion)
+  putStrLn $ "   " ++ (show errLevel)
+  putStrLn $ "   " ++ (show files)
+  
 
