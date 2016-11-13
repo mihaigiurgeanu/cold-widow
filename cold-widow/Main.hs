@@ -27,12 +27,15 @@ receiveAction = io $ putStrLn "receive not implemented"
 
 singleStepOption = option ['1'] ["fast", "single-step"] boolean False "Force single step execution, in memory"
 tempFileOption = option ['t'] ["temporary-file"] boolean False "Force single step execution using a temporary file"
-blockSizeOption = option ['s'] ["bs", "block-size"] natural 0 "Use the specified block size instead of calculating the optimal blocksize"
+blockSizeOption = option ['s'] ["bs", "block-size"] maybeNatural Nothing "Use the specified block size instead of calculating the optimal blocksize"
 qrVersionOption = option ['q'] ["qr-version"]  version AutoVersion "Use the specified qr code version instead of automatically determine the version"
 levelOption = option ['l'] ["error-level"] errorLevel AutoLevel "Use the specified error-level instead of automatically determine the optimal level"
 
 data VersionOption = Version Int | AutoVersion
 data LevelOption = LevelL | LevelM | LevelQ | LevelH | AutoLevel
+
+maybeNatural :: Type (Maybe Integer)
+maybeNatural = Type (\ n -> Just <$> (parser natural) n ) "INT (natural)" Nothing 
 
 version :: Type VersionOption
 version = Type (parseVersionOption . parser natural) "QR Code Version" Nothing
