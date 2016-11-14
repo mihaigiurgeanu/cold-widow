@@ -1,0 +1,105 @@
+
+==================== FINAL INTERFACE ====================
+2016-11-13 23:07:30.694248 UTC
+
+interface conso_IyAwL61Q1p4FdscxhLOf04:System.Console.ConfigFile 7103
+  interface hash: 2f6774b955c1abe30c1c113d07cc9077
+  ABI hash: 094fae039a94c2f55a0206162b31bcd4
+  export-list hash: 3f6294b68330332d1497332cb4cadaab
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 8ed1679aa76be9f72d94d70934be57d0
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  System.Console.ConfigFile.readFromFile
+module dependencies: System.Console.Argument System.Console.Command
+                     System.Console.Internal
+package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
+                      base-4.8.2.0* binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU*
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59
+                      directory-1.2.2.0@direc_0hFG6ZxK1nk4zsyOqbNHfm*
+                      filepath-1.4.0.0@filep_Ey7a1in9roBAE8bUFJ5R9m ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0 monads-tf-0.1.0.3@monad_9v7GLHi1lt0Lhi5iR1wppM
+                      mtl-2.2.1@mtl_BvezOBBn8XzHkNI2WBxXdG
+                      parsec-3.1.11@parse_5O7xx7b9UqU5wmXJqwSNwN
+                      parsec-extra-0.1.0.5@parse_E31NVFAqhj78eXFXjn8y6m
+                      split-0.2.3.1@split_2IxbOPGrTSq7kFrJA7odmE
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+                      time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn
+                      transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg
+                      unix-2.7.1.0@unix_KZL8h98IqDM57kQSPo1mKx
+                      utility-ht-0.0.12@utili_I8JMj9LX9mqFR3z2HtJWas
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+         time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn:Data.Time.Calendar.Gregorian
+         time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn:Data.Time.Format.Parse
+         time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn:Data.Time.LocalTime.LocalTime
+         transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg:Control.Monad.Trans.Error
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         monads-tf-0.1.0.3@monad_9v7GLHi1lt0Lhi5iR1wppM:Control.Monad.Error.Class
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+import  -/  base-4.8.2.0:Control.Applicative a8ebf5ad4932b411ad7725da68be9801
+import  -/  base-4.8.2.0:Control.Exception e9090e246fba030faecf7b81b3e8e320
+import  -/  base-4.8.2.0:Control.Exception.Base b99410eaf0cc6bb119b1d45a497c1b10
+import  -/  base-4.8.2.0:Control.Monad 480c5067477275068c9b98be08410df9
+import  -/  base-4.8.2.0:Data.Either e8724afd65fd432cfe9a54014f5f762d
+import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:Data.Functor 5c701b0af1708f0192a25dfe14ce6274
+import  -/  base-4.8.2.0:Data.List 3f0782c8d4bf50eecefcd5ea1798aac8
+import  -/  base-4.8.2.0:Data.Maybe 1cb58de2b04ee3c0c0a7dc9201184aff
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:Data.Tuple 012ad951a59a9d85fe1de36a2f012986
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  base-4.8.2.0:System.IO 0899686bfc1d9ef72dff3de85e99862a
+import  -/  base-4.8.2.0:System.IO.Error f5a335c06e44d129ccf60f6e0a972e9f
+import  -/  System.Console.Command 8148973aa94a06940d12d3b96199f70f
+  exports: 9b6a23ee056ec2027956915ae8190137
+  Commands 147ac00c999f89af686bab5425abc91f
+import  -/  System.Console.Internal 2f871324b8b910f3a933b68fe89dd7e8
+  exports: ad7e247b3da58d07370a604735f9919e
+  Long 5b1b4275922124a305d785587c94f058
+  Setting c3e313bce86c0a66674ace67b3385db4
+  UserCommand f6ea1376d2160ffcda4d3ccb4b9650ec
+  name 889b4579c3066bd24c4ca4c6f408aa69
+import  -/  containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map bf7758bd12b23a367777a33fd16e39de
+import  -/  containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Tree f0b7807efc082fbe02bdb2290b2a6c88
+import  -/  directory-1.2.2.0@direc_0hFG6ZxK1nk4zsyOqbNHfm:System.Directory a90331b0d3a954e7d46e510cba448504
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  split-0.2.3.1@split_2IxbOPGrTSq7kFrJA7odmE:Data.List.Split 487cc1966f0f25916f1ba58bdff4b0ee
+import  -/  split-0.2.3.1@split_2IxbOPGrTSq7kFrJA7odmE:Data.List.Split.Internals ec8cf5264ec78ab060cadb7ee5b994f0
+import  -/  transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg:Control.Monad.IO.Class 18a8aebf532e56b9dcb6e2d608dadd75
+02b6f42c60356881bd2ae9652545fa53
+  readFromFile ::
+    Control.Monad.IO.Class.MonadIO m =>
+    System.Console.Command.Commands m
+    -> System.Console.Internal.UserCommand
+    -> m [System.Console.Internal.Setting]
+  {- Arity: 3,
+     Strictness: <S(LC(S)),1*U(A,1*C1(U))><L,U(U(U,A,A,A),A)><L,U> -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

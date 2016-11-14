@@ -1,0 +1,681 @@
+
+==================== FINAL INTERFACE ====================
+2016-11-13 23:07:31.65243 UTC
+
+interface conso_IyAwL61Q1p4FdscxhLOf04:System.Console.Program 7103
+  interface hash: e53f7206dc9b46aecf6171ce17bd0421
+  ABI hash: cf2b45b02cd77bd3708cb682d2b879e8
+  export-list hash: cc5e33c582cffa842a5ad0974a87f690
+  orphan hash: 98585b6c4eb1e6a5b184a74ede38020a
+  flag hash: 3da3e52a073e718ce389f784f168e873
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  System.Console.Program.interactive
+  System.Console.Program.interactiveWithPrompt
+  System.Console.Program.showUsage
+  System.Console.Program.single
+module dependencies: System.Console.Argument System.Console.Command
+                     System.Console.ConfigFile System.Console.Internal
+package dependencies: ansi-terminal-0.6.2.3@ansit_BDlVdfJGo3VHCIHxPTNjH1
+                      ansi-wl-pprint-0.6.7.3@ansiw_KTAhiPa3RNI09mbeoAwSSX
+                      array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA base-4.8.2.0
+                      binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59
+                      directory-1.2.2.0@direc_0hFG6ZxK1nk4zsyOqbNHfm
+                      filepath-1.4.0.0@filep_Ey7a1in9roBAE8bUFJ5R9m ghc-prim-0.4.0.0
+                      haskeline-0.7.2.3@haske_LeQVWl17zfi2DtHlxDkltZ integer-gmp-1.0.0.0
+                      monads-tf-0.1.0.3@monad_9v7GLHi1lt0Lhi5iR1wppM
+                      mtl-2.2.1@mtl_BvezOBBn8XzHkNI2WBxXdG
+                      parsec-3.1.11@parse_5O7xx7b9UqU5wmXJqwSNwN
+                      parsec-extra-0.1.0.5@parse_E31NVFAqhj78eXFXjn8y6m
+                      split-0.2.3.1@split_2IxbOPGrTSq7kFrJA7odmE
+                      terminfo-0.4.0.2@termi_GTEmnLYt1ob2hCwhW9sVjr
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+                      time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn
+                      transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg
+                      unix-2.7.1.0@unix_KZL8h98IqDM57kQSPo1mKx
+                      utility-ht-0.0.12@utili_I8JMj9LX9mqFR3z2HtJWas
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+         time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn:Data.Time.Calendar.Gregorian
+         time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn:Data.Time.Format.Parse
+         time-1.5.0.1@time_FTheb6LSxyX1UABIbBXRfn:Data.Time.LocalTime.LocalTime
+         transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg:Control.Monad.Trans.Error
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         monads-tf-0.1.0.3@monad_9v7GLHi1lt0Lhi5iR1wppM:Control.Monad.Error.Class
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+import  -/  ansi-terminal-0.6.2.3@ansit_BDlVdfJGo3VHCIHxPTNjH1:System.Console.ANSI b9ceebd406bd61b44d2625b896f1cfde
+import  -/  ansi-terminal-0.6.2.3@ansit_BDlVdfJGo3VHCIHxPTNjH1:System.Console.ANSI.Common 672696d733d4705f78099c6075f6804d
+import  -/  ansi-terminal-0.6.2.3@ansit_BDlVdfJGo3VHCIHxPTNjH1:System.Console.ANSI.Unix a337ae3aee71ac9000b889bf0b7c0b5e
+import  -/  ansi-wl-pprint-0.6.7.3@ansiw_KTAhiPa3RNI09mbeoAwSSX:Text.PrettyPrint.ANSI.Leijen 798c563a1f4c5a66119895ffed3a9b8e
+import  -/  base-4.8.2.0:Control.Applicative a8ebf5ad4932b411ad7725da68be9801
+import  -/  base-4.8.2.0:Control.Arrow ab7f126fed349de468f94ac777dc8f4e
+import  -/  base-4.8.2.0:Control.Concurrent 1268fba2c60b0505ec9e8731d08a8e75
+import  -/  base-4.8.2.0:Control.Exception e9090e246fba030faecf7b81b3e8e320
+import  -/  base-4.8.2.0:Control.Monad 480c5067477275068c9b98be08410df9
+import  -/  base-4.8.2.0:Data.Either e8724afd65fd432cfe9a54014f5f762d
+import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:Data.Functor 5c701b0af1708f0192a25dfe14ce6274
+import  -/  base-4.8.2.0:Data.List 3f0782c8d4bf50eecefcd5ea1798aac8
+import  -/  base-4.8.2.0:Data.Maybe 1cb58de2b04ee3c0c0a7dc9201184aff
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:Data.Traversable 7576318f4ef8587ad947f87012b65abf
+import  -/  base-4.8.2.0:Data.Tuple 012ad951a59a9d85fe1de36a2f012986
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.Conc.Sync e56817ef33471434aa51ef212cff6db1
+import  -/  base-4.8.2.0:GHC.IO.Exception e38c1261b70caecb7af416b94c82c925
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:GHC.Show 0e1d8380a8fb0cfb07ebeda3b70cbf38
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  base-4.8.2.0:System.Console.GetOpt daf81574dc3d91348ad27e777014814d
+import  -/  base-4.8.2.0:System.Environment ba6e36000c8274703cf7786fbe8d0f6c
+import  -/  base-4.8.2.0:System.Exit f5581af4ad998e898da01fdc74c2769b
+import  -/  base-4.8.2.0:System.IO 0899686bfc1d9ef72dff3de85e99862a
+import  -/  System.Console.Command 8148973aa94a06940d12d3b96199f70f
+  exports: 9b6a23ee056ec2027956915ae8190137
+  Commands 147ac00c999f89af686bab5425abc91f
+import  -/  System.Console.ConfigFile 094fae039a94c2f55a0206162b31bcd4
+  exports: 3f6294b68330332d1497332cb4cadaab
+  readFromFile 02b6f42c60356881bd2ae9652545fa53
+import  -/  System.Console.Internal 2f871324b8b910f3a933b68fe89dd7e8
+  exports: ad7e247b3da58d07370a604735f9919e
+  Command be605c3c0aa4e62607ac32780e202907
+  ConsoleProgramException d2ae94eed1e98333aa9f7bfc760547eb
+  UserCommand f6ea1376d2160ffcda4d3ccb4b9650ec
+  action 5c9596f94cbc199cd4d94f8d3478ab30
+  description 3fecd62adc88185fbb8e31c692542e78
+  ignoringOptions ac659d5e035083e439cae48339231db0
+  name 889b4579c3066bd24c4ca4c6f408aa69
+  nonOptions d96504cd189a93cc300f37c5348a220c
+  options 8b25cbe38567385686afec50c1cd3224
+  run cc7918a2df5f1de46b8cfebfd4a9a94f
+  shorten 4bba81b04f083e7e22dedb87fc351e75
+import  -/  containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map bf7758bd12b23a367777a33fd16e39de
+import  -/  containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base c921f79770a215e3f4c72c747cb6a28a
+import  -/  containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Tree f0b7807efc082fbe02bdb2290b2a6c88
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  haskeline-0.7.2.3@haske_LeQVWl17zfi2DtHlxDkltZ:System.Console.Haskeline 6a6d3e9874cadc42d013d71bc5c0e6db
+import  -/  haskeline-0.7.2.3@haske_LeQVWl17zfi2DtHlxDkltZ:System.Console.Haskeline.InputT 77fdea67e0c6cac112c8d1669c85e76d
+import  -/  haskeline-0.7.2.3@haske_LeQVWl17zfi2DtHlxDkltZ:System.Console.Haskeline.MonadException f6a15345943f3e9a6389b0f0d40756d6
+import  -/  parsec-3.1.11@parse_5O7xx7b9UqU5wmXJqwSNwN:Text.Parsec 5da9cf9d531e6ff027314a51f32f6abd
+import  -/  parsec-3.1.11@parse_5O7xx7b9UqU5wmXJqwSNwN:Text.Parsec.Char 5d0150b5fe255b0dbca875d8ed76ab8b
+import  -/  parsec-3.1.11@parse_5O7xx7b9UqU5wmXJqwSNwN:Text.Parsec.Combinator fb0b87111c83f47140fad7f13c4d676d
+import  -/  parsec-3.1.11@parse_5O7xx7b9UqU5wmXJqwSNwN:Text.Parsec.Prim e5fc7e3195e054e25a2289c88b76cde5
+import  -/  transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg:Control.Monad.IO.Class 18a8aebf532e56b9dcb6e2d608dadd75
+import  -/  transformers-0.4.3.0@trans_6cQ9dYX241E73czBLUJDEg:Control.Monad.Trans.Class b821a5bbf30ac236a42db61227a8b2d8
+import  -/  unix-2.7.1.0@unix_KZL8h98IqDM57kQSPo1mKx:System.Posix.Signals 43afc76a88527910bf881658972ef631
+addDependentFile "/Users/mihaigiurgeanu/.stack/programs/x86_64-osx/ghc-7.10.3/lib/ghc-7.10.3/include/ghcversion.h"
+addDependentFile ".stack-work/dist/x86_64-osx/Cabal-1.22.5.0/build/autogen/cabal_macros.h"
+1c7bf7a167ed66b6785a5060f1a2a475
+  $s$fStream[]mtok ::
+    Text.Parsec.Prim.Stream [tok] Data.Functor.Identity.Identity tok
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ tok.
+                  @ [tok]
+                  @ Data.Functor.Identity.Identity
+                  @ tok
+                  Data.Functor.Identity.$fMonadIdentity
+                  (System.Console.Program.$s$fStream[]mtok_$s$fStream[]mtok_$cuncons
+                     @ tok) -}
+acb3c0d87cfe20f4f4469705415f7024
+  $s$fStream[]mtok_$s$fStream[]mtok_$cuncons ::
+    [tok]
+    -> Data.Functor.Identity.Identity (GHC.Base.Maybe (tok, [tok]))
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Inline: INLINE (sat-args=1),
+     Unfolding: InlineRule (1, False, False)
+                (\ @ tok ds :: [tok] ->
+                 case ds of wild {
+                   []
+                   -> GHC.Base.$
+                        @ (GHC.Base.Maybe (tok, [tok]))
+                        @ (Data.Functor.Identity.Identity (GHC.Base.Maybe (tok, [tok])))
+                        (Data.Functor.Identity.$fApplicativeIdentity_$cpure
+                           @ (GHC.Base.Maybe (tok, [tok])))
+                        (GHC.Base.Nothing @ (tok, [tok]))
+                   : t ts
+                   -> GHC.Base.$
+                        @ (GHC.Base.Maybe (tok, [tok]))
+                        @ (Data.Functor.Identity.Identity (GHC.Base.Maybe (tok, [tok])))
+                        (Data.Functor.Identity.$fApplicativeIdentity_$cpure
+                           @ (GHC.Base.Maybe (tok, [tok])))
+                        (GHC.Base.Just @ (tok, [tok]) (t, ts)) }) -}
+29a9f73e29f9b9ca251b596f3330826e
+  $sfromList ::
+    [(System.Console.Internal.Identifier, a)]
+    -> Data.Map.Base.Map System.Console.Internal.Identifier a
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ @ a8
+                   ds :: [(System.Console.Internal.Identifier, a8)] ->
+                 case ds of wild {
+                   [] -> Data.Map.Base.Tip @ System.Console.Internal.Identifier @ a8
+                   : ds1 ds2
+                   -> case ds1 of wild1 { (,) kx x ->
+                      case ds2 of wild2 {
+                        []
+                        -> case kx
+                                  `cast`
+                                (System.Console.Internal.NTCo:Identifier[0]) of nt { DEFAULT ->
+                           Data.Map.Base.Bin
+                             @ System.Console.Internal.Identifier
+                             @ a8
+                             1
+                             nt `cast` (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                             x
+                             (Data.Map.Base.Tip @ System.Console.Internal.Identifier @ a8)
+                             (Data.Map.Base.Tip @ System.Console.Internal.Identifier @ a8) }
+                        : ipv ipv1
+                        -> case ipv of wild3 { (,) ky ds3 ->
+                           case kx
+                                  `cast`
+                                (System.Console.Internal.NTCo:Identifier[0]) of wild4 {
+                             System.Console.Internal.Short a9
+                             -> case ky
+                                       `cast`
+                                     (System.Console.Internal.NTCo:Identifier[0]) of wild5 {
+                                  System.Console.Internal.Short b1
+                                  -> case a9 of wild6 { GHC.Types.C# c1 ->
+                                     case b1 of wild7 { GHC.Types.C# c2 ->
+                                     case GHC.Prim.tagToEnum#
+                                            @ GHC.Types.Bool
+                                            (GHC.Prim.geChar# c1 c2) of wild8 {
+                                       GHC.Types.False
+                                       -> System.Console.Program.$wpoly_go10
+                                            @ a8
+                                            1
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.Identifier
+                                               @ a8
+                                               1
+                                               (System.Console.Internal.Short wild6)
+                                                 `cast`
+                                               (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8))
+                                            wild2
+                                       GHC.Types.True
+                                       -> System.Console.Program.$sfromList1
+                                            @ a8
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.Identifier
+                                               @ a8
+                                               1
+                                               (System.Console.Internal.Short wild6)
+                                                 `cast`
+                                               (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8))
+                                            wild2 } } }
+                                  System.Console.Internal.Long ipv2
+                                  -> System.Console.Program.$wpoly_go10
+                                       @ a8
+                                       1
+                                       (Data.Map.Base.Bin
+                                          @ System.Console.Internal.Identifier
+                                          @ a8
+                                          1
+                                          (System.Console.Internal.Short a9)
+                                            `cast`
+                                          (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                                          x
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.Identifier
+                                             @ a8)
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.Identifier
+                                             @ a8))
+                                       wild2 }
+                             System.Console.Internal.Long a9
+                             -> case ky
+                                       `cast`
+                                     (System.Console.Internal.NTCo:Identifier[0]) of wild5 {
+                                  System.Console.Internal.Short ipv2
+                                  -> System.Console.Program.$sfromList1
+                                       @ a8
+                                       (Data.Map.Base.Bin
+                                          @ System.Console.Internal.Identifier
+                                          @ a8
+                                          1
+                                          (System.Console.Internal.Long a9)
+                                            `cast`
+                                          (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                                          x
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.Identifier
+                                             @ a8)
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.Identifier
+                                             @ a8))
+                                       wild2
+                                  System.Console.Internal.Long b1
+                                  -> case GHC.Classes.$fOrd[]_$s$ccompare1 a9 b1 of wild6 {
+                                       DEFAULT
+                                       -> System.Console.Program.$sfromList1
+                                            @ a8
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.Identifier
+                                               @ a8
+                                               1
+                                               (System.Console.Internal.Long a9)
+                                                 `cast`
+                                               (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8))
+                                            wild2
+                                       GHC.Types.LT
+                                       -> System.Console.Program.$wpoly_go10
+                                            @ a8
+                                            1
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.Identifier
+                                               @ a8
+                                               1
+                                               (System.Console.Internal.Long a9)
+                                                 `cast`
+                                               (Sym (System.Console.Internal.NTCo:Identifier[0]))
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.Identifier
+                                                  @ a8))
+                                            wild2 } } } } } } }) -}
+fdfc9e63b20c3c50b01828c5da115d0e
+  $sfromList1 ::
+    Data.Map.Base.Map System.Console.Internal.Identifier a1
+    -> [(System.Console.Internal.Identifier, a1)]
+    -> Data.Map.Base.Map System.Console.Internal.Identifier a1
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+2f91020c35e48fe8fd7476fcdcd34d25
+  $sfromList2 ::
+    [(System.Console.Internal.OptionName, a)]
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ @ a8
+                   ds :: [(System.Console.Internal.OptionName, a8)] ->
+                 case ds of wild {
+                   [] -> Data.Map.Base.Tip @ System.Console.Internal.OptionName @ a8
+                   : ds1 ds2
+                   -> case ds1 of wild1 { (,) kx x ->
+                      case ds2 of wild2 {
+                        []
+                        -> case kx of dt { DEFAULT ->
+                           Data.Map.Base.Bin
+                             @ System.Console.Internal.OptionName
+                             @ a8
+                             1
+                             dt
+                             x
+                             (Data.Map.Base.Tip @ System.Console.Internal.OptionName @ a8)
+                             (Data.Map.Base.Tip @ System.Console.Internal.OptionName @ a8) }
+                        : ipv ipv1
+                        -> case ipv of wild3 { (,) ky ds3 ->
+                           case kx of wild4 {
+                             System.Console.Internal.Short a9
+                             -> case ky of wild5 {
+                                  System.Console.Internal.Short b1
+                                  -> case a9 of wild6 { GHC.Types.C# c1 ->
+                                     case b1 of wild7 { GHC.Types.C# c2 ->
+                                     case GHC.Prim.tagToEnum#
+                                            @ GHC.Types.Bool
+                                            (GHC.Prim.geChar# c1 c2) of wild8 {
+                                       GHC.Types.False
+                                       -> System.Console.Program.$wpoly_go1
+                                            @ a8
+                                            1
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.OptionName
+                                               @ a8
+                                               1
+                                               wild4
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8))
+                                            wild2
+                                       GHC.Types.True
+                                       -> System.Console.Program.$sfromList3
+                                            @ a8
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.OptionName
+                                               @ a8
+                                               1
+                                               wild4
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8))
+                                            wild2 } } }
+                                  System.Console.Internal.Long ipv2
+                                  -> System.Console.Program.$wpoly_go1
+                                       @ a8
+                                       1
+                                       (Data.Map.Base.Bin
+                                          @ System.Console.Internal.OptionName
+                                          @ a8
+                                          1
+                                          wild4
+                                          x
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.OptionName
+                                             @ a8)
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.OptionName
+                                             @ a8))
+                                       wild2 }
+                             System.Console.Internal.Long a9
+                             -> case ky of wild5 {
+                                  System.Console.Internal.Short ipv2
+                                  -> System.Console.Program.$sfromList3
+                                       @ a8
+                                       (Data.Map.Base.Bin
+                                          @ System.Console.Internal.OptionName
+                                          @ a8
+                                          1
+                                          wild4
+                                          x
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.OptionName
+                                             @ a8)
+                                          (Data.Map.Base.Tip
+                                             @ System.Console.Internal.OptionName
+                                             @ a8))
+                                       wild2
+                                  System.Console.Internal.Long b1
+                                  -> case GHC.Classes.$fOrd[]_$s$ccompare1 a9 b1 of wild6 {
+                                       DEFAULT
+                                       -> System.Console.Program.$sfromList3
+                                            @ a8
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.OptionName
+                                               @ a8
+                                               1
+                                               wild4
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8))
+                                            wild2
+                                       GHC.Types.LT
+                                       -> System.Console.Program.$wpoly_go1
+                                            @ a8
+                                            1
+                                            (Data.Map.Base.Bin
+                                               @ System.Console.Internal.OptionName
+                                               @ a8
+                                               1
+                                               wild4
+                                               x
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8)
+                                               (Data.Map.Base.Tip
+                                                  @ System.Console.Internal.OptionName
+                                                  @ a8))
+                                            wild2 } } } } } } }) -}
+4017795426e3be05f30786f30da64ab2
+  $sfromList3 ::
+    Data.Map.Base.Map System.Console.Internal.OptionName a1
+    -> [(System.Console.Internal.OptionName, a1)]
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a1
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+83400a38b5b6ffe27ed32c7334ebe20b
+  $sinsert_$sgo1 ::
+    System.Console.Internal.OptionName
+    -> a1
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a1
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a1
+  {- Arity: 3, Strictness: <S,1*U><L,U><S,1*U> -}
+dd89d9c3396035f8647fa1f73d3620ff
+  $sinsert_$sgo10 ::
+    System.Console.Internal.Identifier
+    -> a1
+    -> Data.Map.Base.Map System.Console.Internal.Identifier a1
+    -> Data.Map.Base.Map System.Console.Internal.Identifier a1
+  {- Arity: 3, Strictness: <S,1*U><L,U><S,1*U> -}
+b1df36f074b0838d0b5c49be099653ee
+  $slookup1 ::
+    System.Console.Internal.OptionName
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a
+    -> GHC.Base.Maybe a
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
+c4495b111ae592d7cf443de0991b3560
+  $winteractive ::
+    (System.Console.Haskeline.MonadException.MonadException m,
+     GHC.Base.Applicative m) =>
+    System.Console.Command.Commands m -> m ()
+  {- Arity: 3,
+     Strictness: <L,U(U(U,U),C(U))><L,U(U(U,U),C(U),C(C1(U)),A,A)><L,U(U(U,U,U,U),U)>,
+     Inline: [0],
+     Unfolding: (\ @ (m :: * -> *)
+                   w :: System.Console.Haskeline.MonadException.MonadException m
+                   w1 :: GHC.Base.Applicative m
+                   w2 :: System.Console.Command.Commands m ->
+                 System.Console.Program.$winteractiveWithPrompt
+                   @ m
+                   w
+                   w1
+                   (GHC.Base.return
+                      @ m
+                      (Control.Monad.IO.Class.$p1MonadIO
+                         @ m
+                         (System.Console.Haskeline.MonadException.$p1MonadException @ m w))
+                      @ GHC.Base.String
+                      (case w2 of wild { Data.Tree.Node ds1 ds2 ->
+                       case ds1 of wild1 { System.Console.Internal.Command ds4 ds5 ds3 ds6 ->
+                       ds4 } }))
+                   w2) -}
+af3e4f3523269060842e9482187e9be2
+  $winteractiveWithPrompt ::
+    (System.Console.Haskeline.MonadException.MonadException m,
+     GHC.Base.Applicative m) =>
+    m GHC.Base.String -> System.Console.Command.Commands m -> m ()
+  {- Arity: 2,
+     Strictness: <L,U(U(U,U),C(U))><L,U(U(U,U),C(U),C(C1(U)),A,A)>,
+     Inline: [0] -}
+db14769dd74e4c304f34a57c8082c174
+  $wpoly_go1 ::
+    GHC.Prim.Int#
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a
+    -> [(System.Console.Internal.OptionName, a)]
+    -> Data.Map.Base.Map System.Console.Internal.OptionName a
+  {- Arity: 3, Strictness: <L,U><S,1*U><S,1*U>, Inline: [0] -}
+30c967ea15339d61a3f8e6cb6e886177
+  $wpoly_go10 ::
+    GHC.Prim.Int#
+    -> Data.Map.Base.Map System.Console.Internal.Identifier a
+    -> [(System.Console.Internal.Identifier, a)]
+    -> Data.Map.Base.Map System.Console.Internal.Identifier a
+  {- Arity: 3, Strictness: <L,U><S,1*U><S,1*U>, Inline: [0] -}
+c72dd42fbdea17384b69c32725f17e74
+  $wpoly_usage ::
+    System.Console.Internal.Command n
+    -> Data.Tree.Forest (System.Console.Internal.Command n)
+    -> (# Text.PrettyPrint.ANSI.Leijen.Doc,
+          Text.PrettyPrint.ANSI.Leijen.Doc #)
+  {- Arity: 2,
+     Strictness: <L,1*U(1*U,1*U,1*U(A,1*U,1*U,A),A)><S,1*U>,
+     Inline: [0] -}
+89f006c4bbd081e42f50a0fa6f984db6
+  interactive ::
+    (Control.Monad.IO.Class.MonadIO m,
+     System.Console.Haskeline.MonadException.MonadException m,
+     GHC.Base.Applicative m) =>
+    System.Console.Command.Commands m -> m ()
+  {- Arity: 4,
+     Strictness: <L,A><L,U(U(U,U),C(U))><L,U(U(U,U),C(U),C(C1(U)),A,A)><L,U(U(U,U,U,U),U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, True)
+                (\ @ (m :: * -> *)
+                   w :: Control.Monad.IO.Class.MonadIO m
+                   w1 :: System.Console.Haskeline.MonadException.MonadException m
+                   w2 :: GHC.Base.Applicative m
+                   w3 :: System.Console.Command.Commands m ->
+                 System.Console.Program.$winteractive @ m w1 w2 w3) -}
+dea84c2f01a456d9452387309e66e506
+  interactiveWithPrompt ::
+    (Control.Monad.IO.Class.MonadIO m,
+     System.Console.Haskeline.MonadException.MonadException m,
+     GHC.Base.Applicative m) =>
+    m GHC.Base.String -> System.Console.Command.Commands m -> m ()
+  {- Arity: 3,
+     Strictness: <L,A><L,U(U(U,U),C(U))><L,U(U(U,U),C(U),C(C1(U)),A,A)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ @ (m :: * -> *)
+                   w :: Control.Monad.IO.Class.MonadIO m
+                   w1 :: System.Console.Haskeline.MonadException.MonadException m
+                   w2 :: GHC.Base.Applicative m ->
+                 System.Console.Program.$winteractiveWithPrompt @ m w1 w2) -}
+244a6a5432d7108624be8a2141447b62
+  parse ::
+    (Control.Monad.IO.Class.MonadIO m, GHC.Base.Applicative m) =>
+    System.Console.Command.Commands m -> [GHC.Base.String] -> m ()
+  {- Arity: 4,
+     Strictness: <S(SL),U(1*U,U)><L,U(U(U,U),1*C1(U),C(C1(U)),A,A)><L,U(U(U,U,U,U),1*U)><L,1*U> -}
+47e0e0622917bfbbf868909aece4ff4c
+  showUsage ::
+    Control.Monad.IO.Class.MonadIO m =>
+    System.Console.Command.Commands n -> m ()
+  {- Arity: 2,
+     Strictness: <S(LC(S)),1*U(A,1*C1(U))><L,U(U(U,U,U(A,U,U,A),A),U)>,
+     Unfolding: (\ @ (n :: * -> *)
+                   @ (m :: * -> *)
+                   $dMonadIO :: Control.Monad.IO.Class.MonadIO m
+                   eta1 :: System.Console.Command.Commands n ->
+                 Control.Monad.IO.Class.liftIO
+                   @ m
+                   $dMonadIO
+                   @ ()
+                   (\ eta2 :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                    Text.PrettyPrint.ANSI.Leijen.displayIO1
+                      GHC.IO.Handle.FD.stdout
+                      (Text.PrettyPrint.ANSI.Leijen.renderFits
+                         Text.PrettyPrint.ANSI.Leijen.fits1
+                         Text.PrettyPrint.ANSI.Leijen.$fShowDoc3
+                         Text.PrettyPrint.ANSI.Leijen.$fShowDoc2
+                         (Text.PrettyPrint.ANSI.Leijen.Cat
+                            (System.Console.Program.showUsage1 @ n eta1)
+                            Text.PrettyPrint.ANSI.Leijen.line))
+                      eta2)
+                     `cast`
+                   (Sym (GHC.Types.NTCo:IO[0] <()>_R))) -}
+d9d62ee3d8d08517a8f442b86e4d820d
+  showUsage1 ::
+    Data.Tree.Tree (System.Console.Internal.Command n)
+    -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1,
+     Strictness: <S(LS),1*U(1*U(1*U,1*U,1*U(A,1*U,1*U,A),A),1*U)>m7,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (n :: * -> *)
+                   w :: Data.Tree.Tree (System.Console.Internal.Command n) ->
+                 case w of ww { Data.Tree.Node ww1 ww2 ->
+                 case System.Console.Program.$wpoly_usage
+                        @ n
+                        ww1
+                        ww2 of ww3 { (#,#) ww4 ww5 ->
+                 Text.PrettyPrint.ANSI.Leijen.Cat ww4 ww5 } }) -}
+1fe973f28c3f5d0b397903fa58acd971
+  single ::
+    (Control.Monad.IO.Class.MonadIO m, GHC.Base.Applicative m) =>
+    System.Console.Command.Commands m -> m ()
+  {- Arity: 3,
+     Strictness: <S(S(LC(C(S))LLL)L),U(U(U,U,U,U,U),U)><L,U(U(U,U),C(U),C(C1(U)),A,A)><L,U(U(U,U,U,U),U)>,
+     Unfolding: (\ @ (m :: * -> *)
+                   $dMonadIO :: Control.Monad.IO.Class.MonadIO m
+                   $dApplicative :: GHC.Base.Applicative m
+                   eta1 :: System.Console.Command.Commands m ->
+                 GHC.Base.>>=
+                   @ m
+                   (Control.Monad.IO.Class.$p1MonadIO @ m $dMonadIO)
+                   @ [GHC.Base.String]
+                   @ ()
+                   (Control.Monad.IO.Class.liftIO
+                      @ m
+                      $dMonadIO
+                      @ [GHC.Base.String]
+                      System.Environment.getArgs1
+                        `cast`
+                      (Sym (GHC.Types.NTCo:IO[0] <[GHC.Base.String]>_R)))
+                   (System.Console.Program.parse @ m $dMonadIO $dApplicative eta1)) -}
+"SPEC/System.Console.Program $fStream[]mtok _ @ Identity" [ALWAYS] forall @ tok
+                                                                          $dMonad :: GHC.Base.Monad
+                                                                                       Data.Functor.Identity.Identity
+  Text.Parsec.Prim.$fStream[]mtok @ tok
+                                  @ Data.Functor.Identity.Identity
+                                  $dMonad
+  = System.Console.Program.$s$fStream[]mtok @ tok
+"SPEC/System.Console.Program $fStream[]mtok_$cuncons _ @ Identity" [ALWAYS] forall @ tok
+                                                                                   $dMonad :: GHC.Base.Monad
+                                                                                                Data.Functor.Identity.Identity
+  Text.Parsec.Prim.$fStream[]mtok_$cuncons @ tok
+                                           @ Data.Functor.Identity.Identity
+                                           $dMonad
+  = System.Console.Program.$s$fStream[]mtok_$s$fStream[]mtok_$cuncons
+      @ tok
+"SPEC/System.Console.Program fromList @ Identifier _" [ALWAYS] forall @ a8
+                                                                      $dOrd :: GHC.Classes.Ord
+                                                                                 System.Console.Internal.Identifier
+  Data.Map.Base.fromList @ System.Console.Internal.Identifier
+                         @ a8
+                         $dOrd
+  = System.Console.Program.$sfromList @ a8
+"SPEC/System.Console.Program fromList @ OptionName _" [ALWAYS] forall @ a8
+                                                                      $dOrd :: GHC.Classes.Ord
+                                                                                 System.Console.Internal.OptionName
+  Data.Map.Base.fromList @ System.Console.Internal.OptionName
+                         @ a8
+                         $dOrd
+  = System.Console.Program.$sfromList2 @ a8
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
