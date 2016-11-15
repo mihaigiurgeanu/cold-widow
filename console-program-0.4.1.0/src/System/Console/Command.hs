@@ -16,9 +16,9 @@ module System.Console.Command
   , Action
   , io
   , withNonOption
+  , withNonOptions
   , withOption
   , ignoreOption
-  , withNonOptions
   ) where
 
 
