@@ -22,16 +22,13 @@ program = Node (command "cold-widow" "Transfer files via QRCodes" . io $ interac
             Node (command "r" "Synonym for receive command" receiveAction) []
           ]
 
-optionalFile :: Arg.Type (Maybe FilePath)
-optionalFile = Arg.Type { Arg.name = "FILE", Arg.parser = Right . Just, Arg.defaultValue = Just Nothing }
-
 makeCodesAction :: Action IO
 makeCodesAction = withOption singleStepOption $
                   \ singleStep -> withOption tempFileOption $
                                   \ tempFile -> withOption blockSizeOption $
                                                 \ blockSize -> withOption qrVersionOption $
                                                                \ qrVersion -> withOption levelOption $
-                                                                              \ level -> withNonOptions optionalFile $
+                                                                              \ level -> withNonOptions Arg.file $
                                                                                         \ files -> io $ makeCodes singleStep tempFile blockSize qrVersion level files
 
 receiveAction = io $ putStrLn "receive not implemented"

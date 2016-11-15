@@ -76,6 +76,25 @@ withNonOption argumentType f = Action
   , ignoringOptions = ignoringOptions (f undefined)
   }
 
+-- | Create an action that takes all remaining non-option arguments.
+--
+--  The type of arguments is specified by the first parameter; such  values can
+--  be obtained from the module "System.Console.Argument".
+withNonOptions :: (MonadIO m) => Argument.Type x -> ([x] -> Action m) -> Action m
+withNonOptions argumentType f = Action
+   {
+     run = \ nonOpts opts -> let runWithArgs args [] = run (f $ reverse args) [] opts
+                                 runWithArgs args (x:xs) = case Argument.parser argumentType x of
+                                   Left e -> liftIO $ do
+                                     putStrLn e
+                                     exitFailure
+                                   Right y -> runWithArgs (y:args) xs
+                             in runWithArgs [] nonOpts
+   , nonOptions = ("[" ++ Argument.name argumentType ++ "...]") : nonOptions (f [])
+   , options = options (f [])
+   , ignoringOptions = ignoringOptions (f [])
+   }
+
 -- | Create an action that takes an option.
 -- 
 -- The first parameter is a description of the option; such a value can be
@@ -90,15 +109,6 @@ withOption (Option names optDescr def p) f = Action
   , options = ((identify names,names),optDescr) : options (f undefined)
   , ignoringOptions = ignoringOptions (f undefined)
   }
-
--- variable number of non options
-withNonOptions :: (MonadIO m) => Argument.Type (Maybe x) -> ([x] -> Action m) -> Action m
-withNonOptions t f = (withNonOption t $ collectNonOptions []) {nonOptions = (Argument.name t ++ "...") : nonOptions (f []),
-                                                               options = options (f []),
-                                                               ignoringOptions = ignoringOptions (f [])}
-  where collectNonOptions xs Nothing  = (f . reverse) xs
-        collectNonOptions xs (Just x) = withNonOption t (collectNonOptions (x:xs))
-
 
 -- | Create an action that allows, but ignores, the given option.
 -- 

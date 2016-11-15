@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-11-13 23:07:30.254224 UTC
+2016-11-15 20:00:00.364113 UTC
 
 interface conso_IyAwL61Q1p4FdscxhLOf04:System.Console.Command 7103
-  interface hash: 7a8ed79f7f22add0afa5eeb093dbdede
-  ABI hash: 8148973aa94a06940d12d3b96199f70f
+  interface hash: 4276d4c1eda8bc6c82255b3aa5226883
+  ABI hash: 7acaa44a88cca9d43f4c9b03c2150047
   export-list hash: 9b6a23ee056ec2027956915ae8190137
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 8ed1679aa76be9f72d94d70934be57d0
@@ -237,10 +237,10 @@ a16b2f364abdf1741b80a73555083661
                            (GHC.Err.undefined
                               @ x) of wild { System.Console.Internal.Action ds1 ds2 ds3 ds4 ->
                     ds4 } #)) -}
-e7019126935c9b0c1d54ac4a805cc073
+c23babece2b19092c418328df5d14394
   $wwithNonOptions ::
     Control.Monad.IO.Class.MonadIO m =>
-    System.Console.Argument.Type (GHC.Base.Maybe x)
+    System.Console.Argument.Type x
     -> ([x] -> System.Console.Internal.Action m)
     -> (# [GHC.Base.String]
           -> System.Console.Internal.Settings -> m (),
@@ -252,49 +252,57 @@ e7019126935c9b0c1d54ac4a805cc073
           [System.Console.GetOpt.OptDescr
              System.Console.Internal.CanonicalSetting] #)
   {- Arity: 3,
-     Strictness: <L,U(A,U)><L,U(C(U),U,U)><L,C(U(U,U,U,U))>,
+     Strictness: <L,1*U(A,1*U)><L,U(C(U),1*U,A)><L,C(U(1*C1(C1(U)),1*U,1*U,1*U))>,
      Inline: [0],
      Unfolding: (\ @ x
                    @ (m :: * -> *)
                    w :: Control.Monad.IO.Class.MonadIO m
-                   w1 :: System.Console.Argument.Type (GHC.Base.Maybe x)
+                   w1 :: System.Console.Argument.Type x
                    w2 :: [x] -> System.Console.Internal.Action m ->
-                 case System.Console.Command.$wwithNonOption
-                        @ (GHC.Base.Maybe x)
-                        @ m
-                        w
-                        w1
-                        (letrec {
-                           collectNonOptions :: [x]
-                                                -> GHC.Base.Maybe x
-                                                -> System.Console.Internal.Action m
-                             {- Arity: 2, Strictness: <L,U><S,1*U> -}
-                           = \ xs :: [x] ds :: GHC.Base.Maybe x ->
-                             case ds of wild {
-                               GHC.Base.Nothing -> w2 (GHC.List.reverse @ x xs)
-                               GHC.Base.Just x1
-                               -> case System.Console.Command.$wwithNonOption
-                                         @ (GHC.Base.Maybe x)
-                                         @ m
-                                         w
-                                         w1
-                                         (collectNonOptions
-                                            (GHC.Types.:
-                                               @ x
-                                               x1
-                                               xs)) of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
-                                  System.Console.Internal.Action @ m ww1 ww2 ww3 ww4 } }
-                         } in
-                         collectNonOptions
-                           (GHC.Types.[] @ x)) of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
-                 (# ww1,
+                 let {
+                   lvl :: GHC.Types.IO () -> m ()
+                   = Control.Monad.IO.Class.liftIO @ m w @ ()
+                 } in
+                 (# \ nonOpts :: [GHC.Base.String]
+                      opts :: System.Console.Internal.Settings ->
+                    letrec {
+                      runWithArgs :: [x] -> [GHC.Base.String] -> m ()
+                        {- Arity: 2, Strictness: <L,U><S,1*U> -}
+                      = \ args :: [x] ds :: [GHC.Base.String] ->
+                        case ds of wild {
+                          []
+                          -> case w2
+                                    (GHC.List.reverse
+                                       @ x
+                                       args) of wild1 { System.Console.Internal.Action ds1 ds2 ds3 ds4 ->
+                             ds1 (GHC.Types.[] @ GHC.Base.String) opts }
+                          : x1 xs
+                          -> case w1 of wild1 { System.Console.Argument.Type ds1 ds2 ds3 ->
+                             case ds1 x1 of wild2 {
+                               Data.Either.Left e
+                               -> lvl
+                                    (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                                     case GHC.IO.Handle.Text.hPutStr2
+                                            GHC.IO.Handle.FD.stdout
+                                            e
+                                            GHC.Types.True
+                                            s of ds4 { (#,#) ipv ipv1 ->
+                                     System.Exit.die2 @ () ipv })
+                                      `cast`
+                                    (Sym (GHC.Types.NTCo:IO[0] <()>_R))
+                               Data.Either.Right y
+                               -> runWithArgs (GHC.Types.: @ x y args) xs } } }
+                    } in
+                    runWithArgs (GHC.Types.[] @ x) nonOpts,
                     GHC.Types.:
                       @ GHC.Base.String
-                      (case w1 of wild { System.Console.Argument.Type ds1 ds2 ds3 ->
-                       GHC.Base.++
-                         @ GHC.Types.Char
-                         ds2
-                         System.Console.Command.withNonOptions1 })
+                      (GHC.CString.unpackAppendCString#
+                         "["#
+                         (case w1 of wild { System.Console.Argument.Type ds1 ds2 ds3 ->
+                          GHC.Base.++
+                            @ GHC.Types.Char
+                            ds2
+                            System.Console.Command.withNonOptions1 }))
                       (case w2
                               (GHC.Types.[]
                                  @ x) of wild { System.Console.Internal.Action ds1 ds2 ds3 ds4 ->
@@ -306,7 +314,7 @@ e7019126935c9b0c1d54ac4a805cc073
                     case w2
                            (GHC.Types.[]
                               @ x) of wild { System.Console.Internal.Action ds1 ds2 ds3 ds4 ->
-                    ds4 } #) }) -}
+                    ds4 } #)) -}
 9e51e8cf8818ddac37f56e24c71a182b
   $wwithOption ::
     Control.Monad.IO.Class.MonadIO m =>
@@ -475,20 +483,20 @@ fcfe8226846633995f11a49fdf7661b3
                         w1
                         w2 of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
                  System.Console.Internal.Action @ m ww1 ww2 ww3 ww4 }) -}
-1d1bbbc4f0cc65db1e93e3e92ff27cba
+b3c9fb7b06ee1ad48ca07382703190c8
   withNonOptions ::
     Control.Monad.IO.Class.MonadIO m =>
-    System.Console.Argument.Type (GHC.Base.Maybe x)
+    System.Console.Argument.Type x
     -> ([x] -> System.Console.Internal.Action m)
     -> System.Console.Internal.Action m
   {- Arity: 3,
-     Strictness: <L,U(A,U)><L,U(C(U),U,U)><L,C(U(U,U,U,U))>m,
+     Strictness: <L,1*U(A,1*U)><L,U(C(U),1*U,A)><L,C(U(1*C1(C1(U)),1*U,1*U,1*U))>m,
      Inline: INLINE[0],
      Unfolding: InlineRule (3, True, False)
                 (\ @ x
                    @ (m :: * -> *)
                    w :: Control.Monad.IO.Class.MonadIO m
-                   w1 :: System.Console.Argument.Type (GHC.Base.Maybe x)
+                   w1 :: System.Console.Argument.Type x
                    w2 :: [x] -> System.Console.Internal.Action m ->
                  case System.Console.Command.$wwithNonOptions
                         @ x
@@ -497,9 +505,9 @@ fcfe8226846633995f11a49fdf7661b3
                         w1
                         w2 of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
                  System.Console.Internal.Action @ m ww1 ww2 ww3 ww4 }) -}
-7f1d2b03f3d943f7506955799a413e59
+c79752a66a11c8aca5895d87aaac1029
   withNonOptions1 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "..."#) -}
+  {- Unfolding: (GHC.CString.unpackCString# "...]"#) -}
 722fa250e518b4dbb3eecea6b3135e73
   withOption ::
     Control.Monad.IO.Class.MonadIO m =>
