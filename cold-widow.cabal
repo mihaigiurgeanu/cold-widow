@@ -17,7 +17,7 @@ library
   hs-source-dirs:       lib
   exposed-modules:      Codec.Binary.Coldwidow
   default-language:     Haskell2010
-  build-depends:        base >= 4.7 && < 4.9,
+  build-depends:        base >= 4.7 && < 5,
                         bytestring,
                         qrcode >= 0.1 && < 0.2
 
@@ -25,15 +25,15 @@ Executable cold-widow
   hs-source-dirs:      cold-widow
   main-is:             Main.hs
   default-language:    Haskell2010
-  build-depends:       base >= 4.7 && < 4.9,
-                       console-program >= 0.4 && < 0.5,
+  build-depends:       base >= 4.7 && < 5,
+                       console-program >= 0.4.2.0 && < 0.5,
                        transformers
 
 executable encode45
   hs-source-dirs:       encode
   main-is:              Main.hs
   default-language:     Haskell2010
-  build-depends:        base >= 4.7 && < 4.9,
+  build-depends:        base >= 4.7 && < 5,
                         bytestring,
                         cold-widow
 
@@ -41,7 +41,7 @@ executable decode45
   hs-source-dirs:       decode
   main-is:              Main.hs
   default-language:     Haskell2010
-  build-depends:        base >= 4.7 && < 4.9,
+  build-depends:        base >= 4.7 && < 5,
                         bytestring,
                         cold-widow
 
@@ -49,7 +49,7 @@ executable compact-decode45
   hs-source-dirs:       compact-decode
   main-is:              Main.hs
   default-language:     Haskell2010
-  build-depends:        base >= 4.7 && < 4.9,
+  build-depends:        base >= 4.7 && < 5,
                         bytestring
 
 Test-Suite cold-widow-tests
@@ -58,7 +58,7 @@ Test-Suite cold-widow-tests
   main-is:              Spec.hs
   default-language:     Haskell2010
   other-modules:        Codec.Binary.ColdwidowSpec
-  build-depends:        base >= 4.7 && < 4.9,
+  build-depends:        base >= 4.7 && < 5,
                         hspec,
                         bytestring,
                         cold-widow
