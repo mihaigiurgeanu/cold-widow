@@ -11,7 +11,7 @@ main = single program
 
 program :: Commands IO
 
-program = Node (command "cold-widow" "Transfer files via QRCodes" . io $ interactive program)
+program = Node (command "cold-widow" "Transfer files via QRCodes" . io $ putStrLn "Use 'cold-widow help' for displaying usage information.")
           [
             Node (command "help" "Show usage information" . io $ showUsage program) [],
             Node (command "make-codes" "Generate qr-codes from the content of files, folders or standard input" makeCodesAction) [],
@@ -19,7 +19,8 @@ program = Node (command "cold-widow" "Transfer files via QRCodes" . io $ interac
             Node (command "mc" "Synonym for make-codes command" makeCodesAction) [],
             Node (command "receive" "Restore the content of files sent with qr-codes" receiveAction) [],
             Node (command "rcv" "Synonym for receive command" receiveAction)[],
-            Node (command "r" "Synonym for receive command" receiveAction) []
+            Node (command "r" "Synonym for receive command" receiveAction) [],
+            Node (command "interactive" "Enter interactive mode" . io $ interactive program) []
           ]
 
 makeCodesAction :: Action IO
