@@ -3,7 +3,7 @@ Module:         Codec.Binary.Coldwidow
 Description:    Base45 encoding/decoding 
 
 QR Code alphanumeric mode accepts a set of 45 characters. This module offers
-functions to encode/decode binary data to/from text representation using
+functions to encode\/decode binary data to\/from text representation using
 only the 45 characters allowed by the qr-code alphanumeric mode.
 -}
 module Codec.Binary.Coldwidow (encode, decode, packInteger, unpackInteger) where
@@ -27,24 +27,24 @@ base = 45
 
 -- external inteface
 
--- |Encodes binary data into a String. The resulting string will contain
+-- | Encodes binary data into a 'String'. The resulting string will contain
 -- only the 45 characters allowed by the qr-code alphanumeric mode. The
--- binary data to be encoded should be represented as a Haskell Integer. To
--- convert a ByteString to a Haskell Integer you can use the 'packInteger'
+-- binary data to be encoded should be represented as a 'Integer'. To
+-- convert a 'ByteString' to an 'Integer' you can use the 'packInteger'
 -- function defined bellow.
 encode :: Integer -> String
 encode x = showIntAtBase base toDigit x ""
 
--- |Converts a BinaryString to an Integer. This is used to represent binary
--- data as a Haskell Integer tha can be passed to 'encode' function defined above.
+-- | Converts a 'ByteString' to an 'Integer'. This is used to represent binary
+-- data as an 'Integer' that can be passed to 'encode' function defined above.
 packInteger :: ByteString -> Integer
 packInteger s = packInteger' (B.unpack s) 0
 
--- |Decodes binary data from its text representation. The text representation of
+-- | Decodes binary data from its text representation. The text representation of
 -- data, obtained with the 'encode' function defined above, will contain only
 -- characters allowed in the qr-code alphanumeric mode. The decoded binary data
--- returned by this function will be represented as a Haskell Integer. To convert
--- it into a BinaryString you can use the 'unpackInteger' function defined bellow.
+-- returned by this function will be represented as an 'Integer'. To convert
+-- it into a 'ByteString' you can use the 'unpackInteger' function defined bellow.
 decode :: String -> Integer
 decode encoded = let parsed = readEncodedInt encoded
                  in case parsed of
@@ -53,9 +53,9 @@ decode encoded = let parsed = readEncodedInt encoded
                         where
                           parseMessages = concatMap parseMessage parsed
 
--- |Converts a Haskell Integer into a ByteString. The Integer holds the binary
--- represantation of the data you obtain by using the `decode` function defined
--- above. You can use the ByteString represantation to, for example, save the
+-- | Converts an 'Integer' into a 'ByteString'. The Integer holds the binary
+-- represantation of the data you obtain by using the 'decode' function defined
+-- above. You can use the 'ByteString' represantation to, for example, save the
 -- binary data into a file.
 unpackInteger :: Integer -> ByteString
 unpackInteger 0 = B.singleton 0
