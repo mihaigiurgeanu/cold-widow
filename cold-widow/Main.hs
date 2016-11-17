@@ -6,6 +6,9 @@ import qualified System.Console.Argument as Arg
 import Control.Applicative ((<$))
 import Control.Monad.IO.Class
 
+import System.Directory (getAppUserDataDirectory)
+import qualified Data.Tree as Tree
+
 main :: IO ()
 main = single program
 
@@ -65,6 +68,8 @@ parseLevelOption _ = Left "Only L, M, Q or H levels are accepted for error-level
 
 makeCodes :: Bool -> Bool -> Maybe Integer -> VersionOption -> LevelOption -> [FilePath] -> IO ()
 makeCodes singleStep tempFile blockSize qrVersion errLevel files = do
+  configDir <- getAppUserDataDirectory $ name (Tree.rootLabel program)
+  putStrLn $ "Config file location: " ++ configDir
   putStrLn "makeCodes called with:"
   putStrLn $ "   " ++ (show singleStep)
   putStrLn $ "   " ++ (show tempFile)
