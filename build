@@ -1,0 +1,7 @@
+#!/bin/sh
+
+pushd quirc
+CC=gcc CFLAGS="-O3 -Wall -fPIC" make libquirc.a
+
+popd
+stack build
