@@ -20,7 +20,7 @@ int extract_text(struct quirc *qr, int i, const char **text) {
   if (err)
     *text = quirc_strerror(err);
   else
-    *text = data.payload;
+    *text = (char *)data.payload;
 
   return err?1:0;
 }
