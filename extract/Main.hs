@@ -7,13 +7,15 @@ import Foreign.C.Types (CInt)
 import Foreign.Marshal.Alloc (alloca)
 import Foreign.Storable (peek, pokeByteOff)
 
-import Control.Monad.State (StateT, get, put, gets)
+import Control.Monad.State (StateT, get, put, gets, evalStateT)
 import Control.Monad.IO.Class (liftIO)
 
 import Data.Word (Word8)
 import Data.Bits (shiftR)
 
 import qualified Codec.Picture as I
+
+import System.Environment (getArgs)
 
 -- | opaque data structure used by quirc library
 data Quirc = Quirc
@@ -81,23 +83,20 @@ readQR image  = do
   feedImage image
   decoder <- get
   codesCount <- liftIO $ quirc_count $ quirc decoder
-  liftIO $ sequence $ extractCodes codesCount 0 (quirc decoder)
+  liftIO $ putStrLn $ (show codesCount) ++ " code(s) detected in the file"
+  liftIO $ sequence $ [extractCode i (quirc decoder)| i <- [0..(codesCount - 1)]]
 
 -- | extract all the codes in an image
-extractCodes :: Int -> Int -> Ptr Quirc -> [IO (Either String String)]
-extractCodes n i qr | i>= n = []
-                    | otherwise = let thisCode =
-                                        alloca (\ p_text -> let
-                                                   readText = peek p_text >>= peekCString
-                                                   in
-                                                     do
-                                                       result <- extract_text qr i p_text
-                                                       case result of 0 -> Left <$> readText
-                                                                      1 -> Right <$> readText
-                                                                      _ -> return $ Right $ "Unknown result returned by extract_text function: " ++ (show result))
-                                  in
-                                    thisCode : (extractCodes n (i+1) qr)
-
+extractCode :: Int -> Ptr Quirc -> IO (Either String String)
+extractCode i qr = alloca (\ p_text -> let
+                              readText = peek p_text >>= peekCString
+                              in
+                                do
+                                  result <- extract_text qr i p_text
+                                  case result of 0 -> Right <$> readText
+                                                 1 -> Left <$> readText
+                                                 _ -> return $ Right $ "Unknown result returned by extract_text function: " ++ (show result))
+                 
 instance QRImage I.DynamicImage where
   imageWidth (I.ImageY8     img) = I.imageWidth img
   imageWidth (I.ImageY16    img) = I.imageWidth img
@@ -166,8 +165,30 @@ instance QRImage I.DynamicImage where
 main :: IO ()
 main =
   do
+    files <- getArgs
+
     qr <- quirc_new
     if qr /= nullPtr
       then putStrLn "quirc strcture allocated"
       else fail "quirc structure allocation FAILED"
+    let extractQRs' = sequence_ $ map extractQRs files
+    evalStateT extractQRs' (Decoder qr 0 0)
     quirc_destroy qr
+
+-- | extract text from the qr codes contained in an image file
+-- and displays the result on the standard output
+extractQRs :: String -> StateT Decoder IO ()
+extractQRs filePath = do
+  img <- liftIO $ I.readImage filePath
+  case img of Left err -> liftIO $ putStrLn $ filePath ++ " - error: " ++ err
+              Right img' -> do liftIO $ putStrLn filePath
+                               texts <- readQR img'
+                               liftIO $ sequence_ $ map displayText texts
+
+-- | displays either the text read from a QR code or the error reading the QR code
+displayText :: Either String String -> IO ()
+displayText msg = case msg of Left  msg' -> putStrLn $ "[[[[[" ++ msg' ++ "]]]]]"
+                              Right msg' -> do putStrLn ">>>>>>>>>>>"
+                                               putStrLn msg'
+                                               putStrLn "<<<<<<<<<<<"
+
