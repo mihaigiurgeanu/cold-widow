@@ -248,3 +248,35 @@ doing this for all file parts, you can use the following to obtain the original
 files structure:
 
     #> cat x* | bzcat | tar xv
+
+## Create a qr codes video with ffmpeg
+
+
+The following is taken from [ffmpeg documentation](http://ffmpeg.org/ffmpeg.html):
+
+> You can extract images from a video, or create a video from many images:
+> For extracting images from a video:
+>
+>     ffmpeg -i foo.avi -r 1 -s WxH -f image2 foo-%03d.jpeg
+>
+> This will extract one video frame per second from the video and will output them in files
+> named foo-001.jpeg, foo-002.jpeg, etc. Images will be rescaled to fit the new WxH values.
+>
+> If you want to extract just a limited number of frames, you can use the above command in 
+> combination with the -frames:v or -t option, or in combination with -ss to start extracting
+> from a certain point in time.
+>
+> For creating a video from many images:
+>
+>     ffmpeg -f image2 -framerate 12 -i foo-%03d.jpeg -s WxH foo.avi
+>
+> The syntax foo-%03d.jpeg specifies to use a decimal number composed of three digits padded
+> with zeroes to express the sequence number. It is the same syntax supported by the C 
+> printf function, but only formats accepting a normal integer are suitable.
+>
+> When importing an image sequence, -i also supports expanding shell-like wildcard patterns
+> (globbing) internally, by selecting the image2-specific -pattern_type glob option.
+>
+> For example, for creating a video from filenames matching the glob pattern foo-*.jpeg:
+>
+>     ffmpeg -f image2 -pattern_type glob -framerate 12 -i 'foo-*.jpeg' -s WxH foo.avi
