@@ -6,7 +6,7 @@ QR Code alphanumeric mode accepts a set of 45 characters. This module offers
 functions to encode\/decode binary data to\/from text representation using
 only the 45 characters allowed by the qr-code alphanumeric mode.
 -}
-module Codec.Binary.Coldwidow (encode, decode, packInteger, unpackInteger) where
+module Codec.Binary.Coldwidow (encode, decode, packInteger, unpackInteger, isDigit) where
 
 import Data.Bits (shiftL, (.|.), shiftR)
 import Data.ByteString.Lazy (ByteString)
@@ -61,6 +61,11 @@ unpackInteger :: Integer -> ByteString
 unpackInteger 0 = B.singleton 0
 unpackInteger x = B.pack $ unpackInteger' x []
 
+-- | Check if the given character is an allowed charcter in the encoded text
+isDigit :: Char -> Bool
+isDigit digit = isJust $ elemIndex digit chars
+
+
 -- internal functions
 
 toDigit :: Int -> Char 
@@ -68,9 +73,6 @@ toDigit i = chars !! i -- TODO: make a more efficient implementation
 
 readEncodedInt :: ReadS Integer
 readEncodedInt = readInt base isDigit fromDigit
-
-isDigit :: Char -> Bool
-isDigit digit = isJust $ elemIndex digit chars
 
 fromDigit :: Char -> Int
 fromDigit digit = fromJust $ elemIndex digit chars

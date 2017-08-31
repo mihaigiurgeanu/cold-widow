@@ -19,7 +19,7 @@ library
   default-language:     Haskell2010
   build-depends:        base >= 4.7 && < 5,
                         bytestring,
-                        qrcode >= 0.1 && < 0.2
+                        qrcode >= 0.1.2 && < 0.2
 
 
 Executable cold-widow
@@ -66,13 +66,15 @@ executable read-qr
   c-sources:            extract/extract.c
   include-dirs:         quirc/lib
 
-executable draw-qr
+executable write-qr
   hs-source-dirs:       generate
   main-is:              Main.hs
   default-language:     Haskell2010
   build-depends:        base >=4.7 && <5,
                         qrcode >=0.1.2 && <0.2,
-                        JuicyPixels >=3.2 && <3.3
+                        JuicyPixels >=3.2 && <3.3,
+                        array >=0.5 && <0.6,
+                        cold-widow
                         
 Test-Suite cold-widow-tests
   hs-source-dirs:       tests

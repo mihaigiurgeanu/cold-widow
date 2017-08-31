@@ -1,9 +1,16 @@
 -- write-qr executable
-module Mainn (main) where
+module Main (main) where
+
+import System.Environment (getArgs)
+import System.IO (hPutStrLn, stderr)
 
 import Codec.Binary.QRCode (encode, toArray, version, Version, Mode(..), ErrorLevel(..))
+import Codec.Picture (Image, Pixel8, generateImage, writePng)
+import Codec.Binary.Coldwidow (isDigit)
 
 import Data.List (find)
+import Data.Word (Word8)
+import Data.Array (Array, bounds, (!))
 
 qrConfig :: [(Int, (Int, ErrorLevel))]
 qrConfig = [(  10, ( 1, H)),
@@ -37,7 +44,7 @@ qrConfig = [(  10, ( 1, H)),
             (1460, (22, L)),
             (1588, (23, L)),
             (1704, (24, L)),
-            (1853, (23, L)),
+            (1853, (25, L)),
             (1990, (26, L)),
             (2132, (27, L)),
             (2223, (28, L)),
@@ -60,3 +67,45 @@ selectConfig size = do
   ver' <- version ver
   return (ver', lvl)
   
+generateQR :: String -> Maybe (Array (Int, Int) Word8)
+generateQR text = do
+  (v, l) <- selectConfig $ length text
+  m <- encode v l Alphanumeric text
+  return $ toArray m
+
+generateQRImage :: String -> Maybe (Image Pixel8)
+generateQRImage text = do
+  bits <- generateQR text
+  let ((x0, y0), (x1, y1)) = bounds bits
+      scale = 2
+  return $ generateImage (\ x y -> bits ! ((x `div` scale) + x0, (y `div` scale) + y0)) (scale*(x1-x0+1)) (scale*(y1-y0+1))
+
+
+checkChar :: Char -> IO ()
+checkChar c = if isDigit c
+              then return ()
+              else hPutStrLn stderr $ "Character " ++ (show c) ++ " is not allowed"
+                   
+checkConfig :: String -> IO ()
+checkConfig text = do
+  hPutStrLn stderr $ ">>>>>>>>" ++ (show text) ++ "<<<<<<<<<"
+  let ltext = length text
+  hPutStrLn stderr $ "Length of text is " ++ (show ltext)
+  mapM_ checkChar text
+  case selectConfig ltext of Nothing -> hPutStrLn stderr "No configuration could be selected for the text length"
+                             Just conf -> hPutStrLn stderr $ "Using configuration " ++ (show conf)
+
+  let qr = generateQR text
+  case qr of Nothing -> hPutStrLn stderr "Generation of QR fails"
+             Just qr' -> hPutStrLn stderr $ "Array bounds: " ++ (show $ bounds qr')
+
+main :: IO ()
+main = do
+  args <- getArgs
+  let fileName = args !! 0
+  text <- getContents  
+  let text' = filter (\c -> c /= '\n' && c /= '\r') text
+  checkConfig text'
+  let image' = generateQRImage text'
+  case image' of Nothing   -> fail "The text cannot be encoded. Make sure the text is alphanumeric encoded (use encode45) and the length of the text is less 4296 characters"
+                 Just image -> writePng fileName image
