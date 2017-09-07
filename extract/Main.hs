@@ -7,7 +7,7 @@ import Foreign.C.Types (CInt)
 import Foreign.Marshal.Alloc (alloca)
 import Foreign.Storable (peek, pokeByteOff)
 
-import Control.Monad.State (StateT, get, put, gets, evalStateT)
+import Control.Monad.Trans.State (StateT, get, put, gets, evalStateT)
 import Control.Monad.IO.Class (liftIO)
 
 import Data.Word (Word8)
