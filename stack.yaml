@@ -44,7 +44,6 @@ packages:
 extra-deps:
 - console-program-0.4.2.0
 - parsec-extra-0.2.0.0
-- qrcode-0.1.2
 
 # Override default flag values for local packages and extra-deps
 flags: {}
