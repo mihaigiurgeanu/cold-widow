@@ -1,6 +1,3 @@
 [submodule "quirc"]
 	path = quirc
 	url = https://github.com/dlbeer/quirc
-[submodule "haskell-qrcode"]
-	path = haskell-qrcode
-	url = git@github.com:mihaigiurgeanu/haskell-qrcode.git
