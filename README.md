@@ -32,6 +32,8 @@ You also need [git](https://git-scm.com/) to get the latest source code.
 ### Get the source
 
     git clone https://github.com/mihaigiurgeanu/cold-widow.git
+    git submodule init
+    git submodule update
     
 ### Building
 
