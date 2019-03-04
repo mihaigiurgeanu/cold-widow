@@ -37,13 +37,17 @@ resolver: lts-7.9
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - '.'
-- 'haskell-qrcode'
+- location:
+    git: https://github.com/mihaigiurgeanu/haskell-qrcode.git
+    commit: 5d53fe15ee49fdd8b9a39549485ee191947e304f
+  extra-dep: true
 
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps:
 - console-program-0.4.2.0
 - parsec-extra-0.2.0.0
+
 
 # Override default flag values for local packages and extra-deps
 flags: {}
