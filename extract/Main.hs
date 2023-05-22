@@ -100,6 +100,7 @@ extractCode i qr = alloca (\ p_text -> let
 instance QRImage I.DynamicImage where
   imageWidth (I.ImageY8     img) = I.imageWidth img
   imageWidth (I.ImageY16    img) = I.imageWidth img
+  imageWidth (I.ImageY32    img) = I.imageWidth img
   imageWidth (I.ImageYF     img) = I.imageWidth img
   imageWidth (I.ImageYA8    img) = I.imageWidth img
   imageWidth (I.ImageYA16   img) = I.imageWidth img
@@ -114,6 +115,7 @@ instance QRImage I.DynamicImage where
 
   imageHeight (I.ImageY8     img) = I.imageHeight img
   imageHeight (I.ImageY16    img) = I.imageHeight img
+  imageHeight (I.ImageY32    img) = I.imageHeight img
   imageHeight (I.ImageYF     img) = I.imageHeight img
   imageHeight (I.ImageYA8    img) = I.imageHeight img
   imageHeight (I.ImageYA16   img) = I.imageHeight img
@@ -128,6 +130,7 @@ instance QRImage I.DynamicImage where
   
   greyValue (I.ImageY8     img) x y = I.pixelAt img x y
   greyValue (I.ImageY16    img) x y = fromIntegral $ (I.pixelAt img x y) `shiftR` 8
+  greyValue (I.ImageY32    img) x y = fromIntegral $ (I.pixelAt img x y) `shiftR` 24
   greyValue (I.ImageYF     img) x y = round $ (I.pixelAt img x y) * 255
   greyValue (I.ImageYA8    img) x y = pixelYABtoGrey $ I.pixelAt img x y
     where pixelYABtoGrey (I.PixelYA8 y _) = y

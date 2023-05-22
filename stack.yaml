@@ -15,7 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: lts-7.9
+resolver: lts-13.10
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -45,7 +45,6 @@ packages:
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps:
-- console-program-0.4.2.0
 - parsec-extra-0.2.0.0
 
 
