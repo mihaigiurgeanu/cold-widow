@@ -15,7 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: lts-13.19
+resolver: lts-20.22
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -44,7 +44,7 @@ extra-deps:
 - parsec-extra-0.2.0.0
 - git: https://github.com/mihaigiurgeanu/haskell-qrcode.git
   commit: 5d53fe15ee49fdd8b9a39549485ee191947e304f
-
+- console-program-0.4.2.3
 
 # Override default flag values for local packages and extra-deps
 flags: {}
