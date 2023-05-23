@@ -44,7 +44,6 @@ extra-deps:
 - parsec-extra-0.2.0.0
 - git: https://github.com/mihaigiurgeanu/haskell-qrcode.git
   commit: 5d53fe15ee49fdd8b9a39549485ee191947e304f
-- url: https://hub.darcs.net/mihaigiurgeanu/console-program/dist
 
 
 # Override default flag values for local packages and extra-deps
