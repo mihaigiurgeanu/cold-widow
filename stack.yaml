@@ -41,10 +41,10 @@ packages:
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps:
-- parsec-extra-0.2.0.0
+- parsec-extra-0.2.0.0 # required buy console-program
 - git: https://github.com/mihaigiurgeanu/haskell-qrcode.git
-  commit: 5d53fe15ee49fdd8b9a39549485ee191947e304f
-- console-program-0.4.2.3
+  commit: 8a0a3c1abfc51e3e715be2c3a844e0797f0bd688
+- url: https://hub.darcs.net/mihaigiurgeanu/console-program/dist
 
 # Override default flag values for local packages and extra-deps
 flags: {}
