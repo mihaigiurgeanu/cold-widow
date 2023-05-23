@@ -45,6 +45,7 @@ extra-deps:
 - git: https://github.com/mihaigiurgeanu/haskell-qrcode.git
   commit: 8a0a3c1abfc51e3e715be2c3a844e0797f0bd688
 - url: https://hub.darcs.net/mihaigiurgeanu/console-program/dist
+- pgm-0.1.4
 
 # Override default flag values for local packages and extra-deps
 flags: {}
@@ -66,9 +67,7 @@ extra-package-dbs: []
 # Extra directories used by stack for building
 # extra-include-dirs: [/path/to/dir]
 # extra-lib-dirs: [/path/to/dir]
-extra-lib-dirs:
-- quirc
-
 #
+
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
