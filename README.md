@@ -9,13 +9,6 @@ technology, like email, sms, whatsapp, skype, hangouts, etc to the final
 destination. At the final destination, you feed these texts to the decoder
 and get the original file structure.
 
-When generating qr-codes, the application will archive and compress the files
-you want to send, then will encode the resulting stream of octets as text, using
-the 45 characters allowed in the alpha-numeric mode of the qr-codes.
-
-The application will split the content you want to transfer in as many qr-codes
-as it is needed to transfer the entire content.
-
 ## Installation
 
 The only supported installation method, right now, is from source files,
