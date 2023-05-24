@@ -61,9 +61,9 @@ allowed in qr-code alphanumeric mode and will output the corresponding binary fi
 The name of the file to which `decode45` will save the binary data _must_ be passed
 as the first argument of the `decode45` method.
 
-## write-qr
+## make-qr
 
-`write-qr` generates a qrcode pgm image for a file containing only the 45 charcters
+`make-qr` generates a qrcode pgm image for a file containing only the 45 charcters
 allowed by the qr-code alphanumeric mode.
 
 ## Usage
@@ -85,7 +85,7 @@ Encode the binary files into text files accepted by qr-code:
 
 Generarte qr-codes:
 
-    #> for i in x*.txt; do write-qr $i.txt; done
+    #> for i in x*.txt; do make-qr $i.txt; done
 
 Now, scan the images with a qr-code scanner and send the text over to the destination
 computer.
