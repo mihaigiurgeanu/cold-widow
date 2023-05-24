@@ -2,7 +2,7 @@
 
 Executables and Haskell library to transfer files via QR Codes.
 
-The idea is to generate a list of qr-coedes representing the contents of
+The idea is to generate a list of qr-codes representing the contents of
 the files you want to transfer. The qr-codes will be read as text values by any qr-code
 reader supporting alpahnumeric encoding. The texts can be send via any
 technology, like email, sms, whatsapp, skype, hangouts, etc to the final
